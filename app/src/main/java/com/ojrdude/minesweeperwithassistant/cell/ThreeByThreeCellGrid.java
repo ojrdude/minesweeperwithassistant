@@ -1,4 +1,4 @@
-package com.ojrdude.minesweeperwithassistant;
+package com.ojrdude.minesweeperwithassistant.cell;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 public class ThreeByThreeCellGrid implements Iterable<Cell> {
 
     public static final String ITERATOR_AT_END = "ThreeByThreeCellGrid Iterator already at end!";
-    public static final String REMOVE_NOT_SUPPORTED_BY_ITERATOR = "ThreeByThreeCellGrid Iterator does not support remove";
+    private static final String REMOVE_NOT_SUPPORTED_BY_ITERATOR = "ThreeByThreeCellGrid Iterator does not support remove";
     public static final String ARRAY_NOT_LENGTH_9 = "A ThreeByThreeCellGrid can only be built from an array" +
             " of length 9. If the grid is at the edge of the board, then the 'non-existent' cells" +
             " should be null";
@@ -28,13 +28,14 @@ public class ThreeByThreeCellGrid implements Iterable<Cell> {
         BOTTOM_LEFT(6),
         BOTTOM(7),
         BOTTOM_RIGHT(8);
-        public int value;
+
+        public final int value;
 
         GridLocation(int order){
             this.value = order;
         }
     }
-    Cell[] cells;
+    private Cell[] cells;
 
     /**
      *  Constructor. Instantiates the grid with all cells empty.
@@ -122,7 +123,12 @@ public class ThreeByThreeCellGrid implements Iterable<Cell> {
         return cells[position.value] != null;
     }
 
-    public Cell.CellContents contentsOfCell(GridLocation location){
+    /**
+     * Gets the contents of a cell at a given location.
+     * @param location The GridLocation to inspect.
+     * @return The CellaContents of this cell.
+     */
+    public CellContents contentsOfCell(GridLocation location){
         switch(location){
             case TOP_LEFT:
                 return cells[0].getContents();

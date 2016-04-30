@@ -1,10 +1,12 @@
 package com.ojrdude.minesweeperwithassistant.analyser;
 
-import com.ojrdude.minesweeperwithassistant.Cell;
-import com.ojrdude.minesweeperwithassistant.ThreeByThreeCellGrid;
 import com.ojrdude.minesweeperwithassistant.analyser.exceptions.TooManyFlagsException;
+import com.ojrdude.minesweeperwithassistant.cell.Cell;
+import com.ojrdude.minesweeperwithassistant.cell.CellContents;
+import com.ojrdude.minesweeperwithassistant.cell.ThreeByThreeCellGrid;
 
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -12,7 +14,7 @@ import java.util.Set;
  * moves. It looks at ThreeByThreeGrids of Cells and finds safe moves that can be inferred from
  * these.
  */
-public class SingleCellAnalyser {
+class SingleCellAnalyser {
 
     public static final String NULL_PARAMETER = "The parameter passed to the analyser cannot be null";
     public static final String NULL_CENTRAL_CELL = "The central cell in a ThreeByThree Grid cannot be null";
@@ -51,7 +53,7 @@ public class SingleCellAnalyser {
         }
 
         Set<Cell> result = new HashSet<>();
-        if(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.CENTRE) == Cell.CellContents.UNKNOWN){
+        if(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.CENTRE) == CellContents.UNKNOWN){
             return result;
         }
 
@@ -60,7 +62,7 @@ public class SingleCellAnalyser {
 
         if(numberOfFlags >= numberInCentre){
             for(Cell cell : grid){
-                if(!cell.isFlagged() && cell.getContents() == Cell.CellContents.UNKNOWN) {
+                if(!cell.isFlagged() && cell.getContents() == CellContents.UNKNOWN) {
                     result.add(cell);
                 }
             }
@@ -68,7 +70,7 @@ public class SingleCellAnalyser {
 
         if(numberOfFlags > numberInCentre){
             throw new TooManyFlagsException(grid.getCell(ThreeByThreeCellGrid.GridLocation.CENTRE),
-                    String.format(TOO_MANY_FLAGS, numberInCentre, numberOfFlags));
+                    String.format(Locale.UK, TOO_MANY_FLAGS, numberInCentre, numberOfFlags));
         }
 
         return result;

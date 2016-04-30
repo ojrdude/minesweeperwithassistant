@@ -1,43 +1,51 @@
-package com.ojrdude.minesweeperwithassistant;
+package com.ojrdude.minesweeperwithassistant.cell;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
+
 /**
  * Unit tests for Three By Three Cell Grid
  */
-public class ThreeByThreeCellGridTest extends TestCase {
+public class ThreeByThreeCellGridTest {
 
-    public static final String NO_EXCEPTION_THROWN_CONSTRUCTOR = "ThreeByThreeGrid constructor didn't throw expected exception";
-    public static final String ILLEGAL_ARGUMENT_EXCEPTION_WRONG_MESSAGE = "Thrown IllegalArgumentException didn't have expected message.";
-    public static final String UNEXPECTED_EXCEPTION_THROWN_CONSTRUCTOR = "Unexpected exception thrown by ThreeByThreeCellGrid constructor.";
+    private static final String NO_EXCEPTION_THROWN_CONSTRUCTOR = "ThreeByThreeGrid constructor didn't throw expected exception";
+    private static final String ILLEGAL_ARGUMENT_EXCEPTION_WRONG_MESSAGE = "Thrown IllegalArgumentException didn't have expected message.";
+    private static final String UNEXPECTED_EXCEPTION_THROWN_CONSTRUCTOR = "Unexpected exception thrown by ThreeByThreeCellGrid constructor.";
     private Cell cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9;
     private Cell[] defaultCells;
+
+    @Before
     public void setUp(){
-        cell1 = new Cell(0, 2, Cell.CellContents.ONE);
-        cell2 = new Cell(1, 2, Cell.CellContents.ONE);
-        cell3 = new Cell(2, 2, Cell.CellContents.THREE);
-        cell4 = new Cell(0, 1, Cell.CellContents.MINE);
-        cell5 = new Cell(1, 1, Cell.CellContents.FOUR);
-        cell6 = new Cell(2, 1, Cell.CellContents.EIGHT);
-        cell7 = new Cell(0, 0, Cell.CellContents.SIX);
-        cell8 = new Cell(1, 0, Cell.CellContents.FIVE);
-        cell9 = new Cell(2, 0, Cell.CellContents.ONE);
+        cell1 = new Cell(0, 2, CellContents.ONE);
+        cell2 = new Cell(1, 2, CellContents.ONE);
+        cell3 = new Cell(2, 2, CellContents.THREE);
+        cell4 = new Cell(0, 1, CellContents.MINE);
+        cell5 = new Cell(1, 1, CellContents.FOUR);
+        cell6 = new Cell(2, 1, CellContents.EIGHT);
+        cell7 = new Cell(0, 0, CellContents.SIX);
+        cell8 = new Cell(1, 0, CellContents.FIVE);
+        cell9 = new Cell(2, 0, CellContents.ONE);
         defaultCells = new Cell[]{cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9};
     }
 
+    @Test
     public void testArrayConstructor(){
         Cell[] invalidArray1 = {};
         Cell[] invalidArray2 = {cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8};
         Cell[] invalidArray3 = {cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8,
-            cell9, new Cell(5, 5, Cell.CellContents.MINE)};
+            cell9, new Cell(5, 5, CellContents.MINE)};
         Cell[] validArray = {cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9};
         ThreeByThreeCellGrid grid;
         try{
-            //noinspection UnusedAssignment Testing Constructor throws exception only
-            grid = new ThreeByThreeCellGrid(invalidArray1);
+            new ThreeByThreeCellGrid(invalidArray1);
             fail(NO_EXCEPTION_THROWN_CONSTRUCTOR);
         }
         catch(IllegalArgumentException e){
@@ -49,8 +57,7 @@ public class ThreeByThreeCellGridTest extends TestCase {
         }
 
         try{
-            //noinspection UnusedAssignment Testing Constructor throws exception only
-            grid = new ThreeByThreeCellGrid(invalidArray2);
+            new ThreeByThreeCellGrid(invalidArray2);
             fail(NO_EXCEPTION_THROWN_CONSTRUCTOR);
         }
         catch(IllegalArgumentException e){
@@ -62,8 +69,7 @@ public class ThreeByThreeCellGridTest extends TestCase {
         }
 
         try{
-            //noinspection UnusedAssignment Testing Constructor throws exception only
-            grid = new ThreeByThreeCellGrid(invalidArray3);
+            new ThreeByThreeCellGrid(invalidArray3);
             fail(NO_EXCEPTION_THROWN_CONSTRUCTOR);
         }
         catch(IllegalArgumentException e){
@@ -78,6 +84,7 @@ public class ThreeByThreeCellGridTest extends TestCase {
         assertCellsSet(true, grid);
     }
 
+    @Test
     public void testConstructorAndGetCell(){
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid(cell1, cell2, cell3, cell4, cell5,
                 cell6, cell7, cell8, cell9);
@@ -85,6 +92,7 @@ public class ThreeByThreeCellGridTest extends TestCase {
         assertGridContents(grid);
     }
 
+    @Test
     public void testSetAndGetCell(){
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid();
 
@@ -101,6 +109,7 @@ public class ThreeByThreeCellGridTest extends TestCase {
         assertGridContents(grid);
     }
 
+    @Test
     public void testIsCellSetAt(){
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid();
         assertCellsSet(false, grid);
@@ -118,6 +127,7 @@ public class ThreeByThreeCellGridTest extends TestCase {
         assertCellsSet(true, grid);
     }
 
+    @Test
     public void testGridIterator(){
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid();
         grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT, cell1);
@@ -164,29 +174,30 @@ public class ThreeByThreeCellGridTest extends TestCase {
         }
     }
 
+    @Test
     public void testGetValueOfCell(){
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid(defaultCells);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT), Cell.CellContents.UNKNOWN);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP), Cell.CellContents.UNKNOWN);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP_RIGHT), Cell.CellContents.UNKNOWN);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.LEFT), Cell.CellContents.UNKNOWN);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.CENTRE), Cell.CellContents.UNKNOWN);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.RIGHT), Cell.CellContents.UNKNOWN);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_LEFT), Cell.CellContents.UNKNOWN);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM), Cell.CellContents.UNKNOWN);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_RIGHT), Cell.CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT), CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP), CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP_RIGHT), CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.LEFT), CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.CENTRE), CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.RIGHT), CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_LEFT), CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM), CellContents.UNKNOWN);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_RIGHT), CellContents.UNKNOWN);
         for(Cell cell : grid){
             cell.uncover();
         }
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT), Cell.CellContents.ONE);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP), Cell.CellContents.ONE);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP_RIGHT), Cell.CellContents.THREE);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.LEFT), Cell.CellContents.MINE);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.CENTRE), Cell.CellContents.FOUR);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.RIGHT), Cell.CellContents.EIGHT);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_LEFT), Cell.CellContents.SIX);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM), Cell.CellContents.FIVE);
-        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_RIGHT), Cell.CellContents.ONE);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT), CellContents.ONE);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP), CellContents.ONE);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.TOP_RIGHT), CellContents.THREE);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.LEFT), CellContents.MINE);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.CENTRE), CellContents.FOUR);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.RIGHT), CellContents.EIGHT);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_LEFT), CellContents.SIX);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM), CellContents.FIVE);
+        assertEquals(grid.contentsOfCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_RIGHT), CellContents.ONE);
 
     }
     private void assertGridContents(ThreeByThreeCellGrid grid) {

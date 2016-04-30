@@ -1,27 +1,35 @@
 package com.ojrdude.minesweeperwithassistant.analyser;
 
-import com.ojrdude.minesweeperwithassistant.Cell;
-import com.ojrdude.minesweeperwithassistant.ThreeByThreeCellGrid;
 import com.ojrdude.minesweeperwithassistant.analyser.exceptions.TooManyFlagsException;
+import com.ojrdude.minesweeperwithassistant.cell.Cell;
+import com.ojrdude.minesweeperwithassistant.cell.CellContents;
+import com.ojrdude.minesweeperwithassistant.cell.ThreeByThreeCellGrid;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
+
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * Unit Test for SingleCellAnalyser
  */
-public class SingleCellAnalyserTest extends TestCase  {
-    public static final String FIND_SAFE_CELLS_NO_ILLEGAL_ARG_EXCEPTION = "findSafeCells did not throw expected IllegalArgumentException";
-    public static final String FIND_SAFE_CELLS_UNEXPECTED_EXCEPTION_THROWN = "Unexpected Exception thrown by findSafeCells.";
-    public static final String ILLEGAL_ARGUMENT_EXCEPTION_WRONG_MESSAGE = "IllegalArgumentException had different message to that expected";
+public class SingleCellAnalyserTest{
+    private static final String FIND_SAFE_CELLS_NO_ILLEGAL_ARG_EXCEPTION = "findSafeCells did not throw expected IllegalArgumentException";
+    private static final String FIND_SAFE_CELLS_UNEXPECTED_EXCEPTION_THROWN = "Unexpected Exception thrown by findSafeCells.";
+    private static final String ILLEGAL_ARGUMENT_EXCEPTION_WRONG_MESSAGE = "IllegalArgumentException had different message to that expected";
     private SingleCellAnalyser sca;
 
+    @Before
     public void setUp(){
         sca = new SingleCellAnalyser();
     }
 
+    @Test
     public void testNullGridThrowsException(){
         try{
             sca.findSafeCells(null);
@@ -36,38 +44,13 @@ public class SingleCellAnalyserTest extends TestCase  {
         }
     }
 
-    public void testCentralCellNullThrowsException(){
-        ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid();
-        assertFindSafeCellsIllegalArgExceptionThrown(grid, SingleCellAnalyser.NULL_CENTRAL_CELL);
-
-        Cell[] cells = {
-                new Cell(9, 21, Cell.CellContents.MINE),
-                new Cell(10, 21, Cell.CellContents.ONE),
-                new Cell(11, 21, Cell.CellContents.FIVE),
-                new Cell(9, 20, Cell.CellContents.ONE),
-                new Cell(11, 20, Cell.CellContents.ZERO),
-                new Cell(9, 19, Cell.CellContents.ZERO),
-                new Cell(10, 19, Cell.CellContents.TWO),
-                new Cell(11, 19, Cell.CellContents.FOUR)
-        };
-        grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT, cells[0]);
-        grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP, cells[1]);
-        grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP_RIGHT, cells[2]);
-        grid.setCell(ThreeByThreeCellGrid.GridLocation.LEFT, cells[3]);
-        grid.setCell(ThreeByThreeCellGrid.GridLocation.RIGHT, cells[4]);
-        grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_LEFT, cells[5]);
-        grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM, cells[6]);
-        grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_RIGHT, cells[7]);
-
-        assertFindSafeCellsIllegalArgExceptionThrown(grid, SingleCellAnalyser.NULL_CENTRAL_CELL);
-    }
-
+    @Test
     public void testTooManyNullCellsThrowsException(){
         Cell[] cells = {
-                new Cell(8, 8, Cell.CellContents.MINE),
-                new Cell(9, 8, Cell.CellContents.SIX),
-                new Cell(10, 8, Cell.CellContents.SEVEN),
-                new Cell(9, 7, Cell.CellContents.EIGHT),
+                new Cell(8, 8, CellContents.MINE),
+                new Cell(9, 8, CellContents.SIX),
+                new Cell(10, 8, CellContents.SEVEN),
+                new Cell(9, 7, CellContents.EIGHT),
         };
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid(null,null,null,
                 null,cells[3],null,
@@ -84,17 +67,45 @@ public class SingleCellAnalyserTest extends TestCase  {
         grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT, cells[2]);
     }
 
+    @Test
+    public void testCentralCellNullThrowsException(){
+        ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid();
+        assertFindSafeCellsIllegalArgExceptionThrown(grid, SingleCellAnalyser.NULL_CENTRAL_CELL);
+
+        Cell[] cells = {
+                new Cell(9, 21, CellContents.MINE),
+                new Cell(10, 21, CellContents.ONE),
+                new Cell(11, 21, CellContents.FIVE),
+                new Cell(9, 20, CellContents.ONE),
+                new Cell(11, 20, CellContents.ZERO),
+                new Cell(9, 19, CellContents.ZERO),
+                new Cell(10, 19, CellContents.TWO),
+                new Cell(11, 19, CellContents.FOUR)
+        };
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT, cells[0]);
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP, cells[1]);
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP_RIGHT, cells[2]);
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.LEFT, cells[3]);
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.RIGHT, cells[4]);
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_LEFT, cells[5]);
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM, cells[6]);
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_RIGHT, cells[7]);
+
+        assertFindSafeCellsIllegalArgExceptionThrown(grid, SingleCellAnalyser.NULL_CENTRAL_CELL);
+    }
+
+    @Test
     public void testCoveredCentralCellReturnsEmptySet(){
         Cell[] cells = {
-                new Cell(37,99, Cell.CellContents.ONE),
-                new Cell(38, 99, Cell.CellContents.MINE),
-                new Cell(39, 99, Cell.CellContents.ONE),
-                new Cell(37, 98, Cell.CellContents.ONE),
-                new Cell(38, 98, Cell.CellContents.ONE),
-                new Cell(39, 98, Cell.CellContents.ONE),
-                new Cell(37, 97, Cell.CellContents.ZERO),
-                new Cell(38, 97, Cell.CellContents.ZERO),
-                new Cell(39, 97, Cell.CellContents.ZERO)
+                new Cell(37,99, CellContents.ONE),
+                new Cell(38, 99, CellContents.MINE),
+                new Cell(39, 99, CellContents.ONE),
+                new Cell(37, 98, CellContents.ONE),
+                new Cell(38, 98, CellContents.ONE),
+                new Cell(39, 98, CellContents.ONE),
+                new Cell(37, 97, CellContents.ZERO),
+                new Cell(38, 97, CellContents.ZERO),
+                new Cell(39, 97, CellContents.ZERO)
         };
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid(
                 cells[0], cells[1], cells[2],
@@ -109,17 +120,18 @@ public class SingleCellAnalyserTest extends TestCase  {
      * and all other cells are covered. The analyser should return all the covered cells
      * in a set as safe.
      */
+    @Test
     public void testOneMineOneCellAllOthersSafe(){
         Cell[] cells = {
-                new Cell(0, 2, Cell.CellContents.ONE),
-                new Cell(1, 2, Cell.CellContents.ONE),
-                new Cell(2, 2, Cell.CellContents.TWO),
-                new Cell(0, 1, Cell.CellContents.MINE),
-                new Cell(1, 1, Cell.CellContents.ONE),
-                new Cell(2, 1, Cell.CellContents.ZERO),
-                new Cell(0, 0, Cell.CellContents.ONE),
-                new Cell(1, 0, Cell.CellContents.ONE),
-                new Cell(2, 0, Cell.CellContents.ZERO)
+                new Cell(0, 2, CellContents.ONE),
+                new Cell(1, 2, CellContents.ONE),
+                new Cell(2, 2, CellContents.TWO),
+                new Cell(0, 1, CellContents.MINE),
+                new Cell(1, 1, CellContents.ONE),
+                new Cell(2, 1, CellContents.ZERO),
+                new Cell(0, 0, CellContents.ONE),
+                new Cell(1, 0, CellContents.ONE),
+                new Cell(2, 0, CellContents.ZERO)
         };
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid(cells);
 
@@ -141,17 +153,18 @@ public class SingleCellAnalyserTest extends TestCase  {
      * Test the situation where there are 7 mines, all flagged, and the central
      * cell contains a 7. This cell only should be returned in the safe cell set by the analyser.
      */
+    @Test
     public void testSevenMinesOneSafe(){
         Cell[] cells = {
-                new Cell(29, 1001, Cell.CellContents.MINE),
-                new Cell(30, 1001, Cell.CellContents.MINE),
-                new Cell(31, 1001, Cell.CellContents.MINE),
-                new Cell(29, 1000, Cell.CellContents.MINE),
-                new Cell(30, 1000, Cell.CellContents.SEVEN),
-                new Cell(31, 1000, Cell.CellContents.TWO),
-                new Cell(29, 999, Cell.CellContents.MINE),
-                new Cell(30, 999, Cell.CellContents.MINE),
-                new Cell(31, 999, Cell.CellContents.MINE),
+                new Cell(29, 1001, CellContents.MINE),
+                new Cell(30, 1001, CellContents.MINE),
+                new Cell(31, 1001, CellContents.MINE),
+                new Cell(29, 1000, CellContents.MINE),
+                new Cell(30, 1000, CellContents.SEVEN),
+                new Cell(31, 1000, CellContents.TWO),
+                new Cell(29, 999, CellContents.MINE),
+                new Cell(30, 999, CellContents.MINE),
+                new Cell(31, 999, CellContents.MINE),
         };
         cells[0].flag();
         cells[1].flag();
@@ -172,17 +185,18 @@ public class SingleCellAnalyserTest extends TestCase  {
      * Test that when an eight is in the central cell, the safe cell set is empty regardless
      * of the number of flags.
      */
+    @Test
     public void testEightMinesNoneSafe(){
         Cell[] cells = {
-                new Cell(55, 10, Cell.CellContents.MINE),
-                new Cell(56, 10, Cell.CellContents.MINE),
-                new Cell(57, 10, Cell.CellContents.MINE),
-                new Cell(55, 9, Cell.CellContents.MINE),
-                new Cell(56, 9, Cell.CellContents.EIGHT),
-                new Cell(57, 9, Cell.CellContents.MINE),
-                new Cell(55, 8, Cell.CellContents.MINE),
-                new Cell(56, 8, Cell.CellContents.MINE),
-                new Cell(57, 8, Cell.CellContents.MINE)
+                new Cell(55, 10, CellContents.MINE),
+                new Cell(56, 10, CellContents.MINE),
+                new Cell(57, 10, CellContents.MINE),
+                new Cell(55, 9, CellContents.MINE),
+                new Cell(56, 9, CellContents.EIGHT),
+                new Cell(57, 9, CellContents.MINE),
+                new Cell(55, 8, CellContents.MINE),
+                new Cell(56, 8, CellContents.MINE),
+                new Cell(57, 8, CellContents.MINE)
         };
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid(cells);
 
@@ -200,17 +214,18 @@ public class SingleCellAnalyserTest extends TestCase  {
      * the safe cell set should be empty. When there are 4 flags, the other 4 cells should be returned
      * as safe.
      */
+    @Test
     public void testFourMinesZeroToFourFlags(){
         Cell[] cells = {
-                new Cell(200, 200, Cell.CellContents.MINE),
-                new Cell(201, 200, Cell.CellContents.MINE),
-                new Cell(202, 200, Cell.CellContents.FIVE),
-                new Cell(200, 199, Cell.CellContents.MINE),
-                new Cell(201, 199, Cell.CellContents.FOUR),
-                new Cell(202, 199, Cell.CellContents.THREE),
-                new Cell(200, 198, Cell.CellContents.TWO),
-                new Cell(201, 198, Cell.CellContents.TWO),
-                new Cell(202, 198, Cell.CellContents.MINE)
+                new Cell(200, 200, CellContents.MINE),
+                new Cell(201, 200, CellContents.MINE),
+                new Cell(202, 200, CellContents.FIVE),
+                new Cell(200, 199, CellContents.MINE),
+                new Cell(201, 199, CellContents.FOUR),
+                new Cell(202, 199, CellContents.THREE),
+                new Cell(200, 198, CellContents.TWO),
+                new Cell(201, 198, CellContents.TWO),
+                new Cell(202, 198, CellContents.MINE)
         };
         ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid(cells);
         Set<Cell> emptySet = new HashSet<>();
@@ -234,17 +249,18 @@ public class SingleCellAnalyserTest extends TestCase  {
         assertEquals(safeCells, sca.findSafeCells(grid));
     }
 
+    @Test
     public void testTooManyFlagsRaisesException(){
         Cell[] cells = {
-                new Cell(4, 24, Cell.CellContents.ONE),
-                new Cell(5, 24, Cell.CellContents.TWO),
-                new Cell(6, 24, Cell.CellContents.MINE),
-                new Cell(4, 23, Cell.CellContents.TWO),
-                new Cell(5, 23, Cell.CellContents.TWO),
-                new Cell(6, 23, Cell.CellContents.MINE),
-                new Cell(4, 22, Cell.CellContents.ONE),
-                new Cell(5, 22, Cell.CellContents.THREE),
-                new Cell(6, 22, Cell.CellContents.TWO)
+                new Cell(4, 24, CellContents.ONE),
+                new Cell(5, 24, CellContents.TWO),
+                new Cell(6, 24, CellContents.MINE),
+                new Cell(4, 23, CellContents.TWO),
+                new Cell(5, 23, CellContents.TWO),
+                new Cell(6, 23, CellContents.MINE),
+                new Cell(4, 22, CellContents.ONE),
+                new Cell(5, 22, CellContents.THREE),
+                new Cell(6, 22, CellContents.TWO)
         };
         cells[4].uncover();
         cells[0].flag();
@@ -258,13 +274,12 @@ public class SingleCellAnalyserTest extends TestCase  {
         }
         catch(TooManyFlagsException e){
             assertEquals("TooManyFlagsException did not have the expected message.",
-                    String.format(SingleCellAnalyser.TOO_MANY_FLAGS, 2, 3), e.getMessage());
+                    String.format(Locale.UK, SingleCellAnalyser.TOO_MANY_FLAGS, 2, 3), e.getMessage());
             assertEquals(cells[4], e.getCellAtFault());
         }
         catch(Exception e){
             fail(FIND_SAFE_CELLS_UNEXPECTED_EXCEPTION_THROWN);
         }
-
     }
 
     private void assertFindSafeCellsIllegalArgExceptionThrown(ThreeByThreeCellGrid grid, String expectedMessage) {

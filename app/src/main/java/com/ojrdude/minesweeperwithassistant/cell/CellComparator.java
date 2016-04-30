@@ -1,4 +1,4 @@
-package com.ojrdude.minesweeperwithassistant;
+package com.ojrdude.minesweeperwithassistant.cell;
 
 import java.util.Comparator;
 
@@ -14,7 +14,7 @@ import java.util.Comparator;
  *  they are equal.
  *
  */
-public class CellComparator implements Comparator<Cell> {
+class CellComparator implements Comparator<Cell> {
     @Override
     public int compare(Cell left, Cell right) {
         if (left.getYCoordinate() > right.getYCoordinate()){

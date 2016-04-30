@@ -1,4 +1,4 @@
-package com.ojrdude.minesweeperwithassistant;
+package com.ojrdude.minesweeperwithassistant.cell;
 
 /**
  * The Cell class represents a cell on the Minesweeper game board. The values that a cell
@@ -13,67 +13,6 @@ public class Cell {
     public static final String ATTEMPTED_TO_FLAG_CELL_ALREADY_FLAGGED = "Attempted to flag a cell that is already flag.";
     public static final String ATTEMPTED_TO_UNFLAG_UNCOVERED_CELL = "Attempted to unflag a cell that is uncovered.";
     public static final String ATTEMPTED_TO_UNFLAG_CELL_ALREADY_UNFLAGGED = "Attempted to unflag a cell that is already unflagged.";
-
-    /**
-     * Enumerated type that represents the allowed values
-     * of a cell (i.e. the number of mines known to surround the cell).
-     * MINE represents a cell that itself contains a mine, and UNKNOWN represents
-     * a covered cell.
-     */
-    public enum CellContents{
-        MINE(-1),
-        ZERO(0),
-        ONE(1),
-        TWO(2),
-        THREE(3),
-        FOUR(4),
-        FIVE(5),
-        SIX(6),
-        SEVEN(7),
-        EIGHT(8),
-        UNKNOWN(9);
-
-        public static final String CELL_VALUE_OUT_OF_RANGE = "The parameter 'Value' must be between -1 and 9 inclusive. Illegal Value: ";
-        private int intValue;
-
-        /**
-         * Constructor for CellContents, sets the value to the parameter given.
-         * @param intValue The numerical definition of the Cell value. The allowed
-         *              values are -1 to 9 inclusive. -1 symbolises a mine and 9
-         *              symbolises unknown (i.e. a covered cell). All other numbers
-         *              are the number that is displayed in the cell.
-         */
-        CellContents(int intValue){
-            if(intValue > 9 || intValue < -1){
-                throw new IllegalArgumentException(CELL_VALUE_OUT_OF_RANGE + intValue);
-            }
-            this.intValue = intValue;
-            }
-
-        /**
-         * Accessor method for CellContents intValue.
-         * @return The intValue of the Cell's contents
-         */
-        public int getIntValue() {
-            return intValue;
-        }
-
-        /**
-         * Returns a String representation of the CellContents.
-         * @return A String a representation of the CellContents.
-         */
-        public String toString(){
-            switch (intValue){
-                case -1:
-                    return "MINE";
-                case 9:
-                    return "UNKNOWN";
-                default:
-                    return String.valueOf(intValue);
-            }
-        }
-
-        }
 
     public static final String X_COORDINATE_LESS_THAN_ZERO = "Coordinates must be 0 or greater. XCoord: ";
     public static final String Y_COORDINATE_LESS_THAN_ZERO = "Coordinates must be 0 or greater. YCoord: ";
