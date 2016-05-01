@@ -2,6 +2,9 @@ package com.ojrdude.minesweeperwithassistant.minefield;
 
 import com.ojrdude.minesweeperwithassistant.cell.Cell;
 import com.ojrdude.minesweeperwithassistant.cell.CellContents;
+import com.ojrdude.minesweeperwithassistant.cell.ThreeByThreeCellGrid;
+
+import java.util.Locale;
 
 /**
  * Class that represents a minefield. Its size and number of mines are
@@ -9,6 +12,8 @@ import com.ojrdude.minesweeperwithassistant.cell.CellContents;
  * provides into a grid of Cell objects.
  */
 class Minefield {
+
+    public static final String COORDINATE_OUT_OF_RANGE = "Invalid %s coordinate: %d";
 
     private final IMinefieldGenerator minefieldGenerator;
     private Cell[][] field;
@@ -43,6 +48,54 @@ class Minefield {
         field = constructField();
     }
 
+    /**
+     * Returns a ThreeByThreeCellGrid of the Minefield for with the cell at the
+     * gven coordinates at the centre. It is provided so that analysing classes can obtain
+     * a small section of the board for their analysis.
+     *
+     * @param xCoord The x coordinate of the cell to be at the centre of the returned grid.
+     * @param yCoord The y coordinate of the cell rto be at the centre of the returned grid.
+     * @throws IllegalArgumentException if one of the coordinates is out of the range of the minefield grid.
+     * @return A ThreeByThreeCellGrid with the specified cell at the centre.
+     */
+    public ThreeByThreeCellGrid getThreeByThreeGrid(int xCoord, int yCoord){
+        if(xCoord < 0 || xCoord >= minefieldGenerator.getWidth()){
+            throw new IllegalArgumentException(String.format(Locale.UK, COORDINATE_OUT_OF_RANGE, "x", xCoord));
+        }
+        if(yCoord < 0 || yCoord >= minefieldGenerator.getHeight()){
+            throw new IllegalArgumentException(String.format(Locale.UK, COORDINATE_OUT_OF_RANGE, "y", yCoord));
+        }
+
+        ThreeByThreeCellGrid grid = new ThreeByThreeCellGrid();
+        grid.setCell(ThreeByThreeCellGrid.GridLocation.CENTRE, field[xCoord][yCoord]);
+
+        if(xCoord > 0 && yCoord > 0){
+            grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP_LEFT, field[xCoord - 1][yCoord - 1]);
+        }
+        if(yCoord > 0){
+            grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP, field[xCoord][yCoord - 1]);
+        }
+        if(xCoord < minefieldGenerator.getWidth() - 1 && yCoord > 0){
+            grid.setCell(ThreeByThreeCellGrid.GridLocation.TOP_RIGHT, field[xCoord + 1][yCoord - 1]);
+        }
+        if(xCoord > 0){
+            grid.setCell(ThreeByThreeCellGrid.GridLocation.LEFT, field[xCoord - 1][yCoord]);
+        }
+        if(xCoord < minefieldGenerator.getWidth() - 1){
+            grid.setCell(ThreeByThreeCellGrid.GridLocation.RIGHT, field[xCoord + 1][yCoord]);
+        }
+        if(xCoord > 0 && yCoord < minefieldGenerator.getHeight() - 1){
+            grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_LEFT, field[xCoord - 1][yCoord + 1]);
+        }
+        if(yCoord < minefieldGenerator.getHeight() - 1){
+            grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM, field[xCoord][yCoord + 1]);
+        }
+        if(xCoord < minefieldGenerator.getWidth() - 1 && yCoord < minefieldGenerator.getHeight() - 1){
+            grid.setCell(ThreeByThreeCellGrid.GridLocation.BOTTOM_RIGHT, field[xCoord + 1][yCoord + 1]);
+        }
+
+        return grid;
+    }
 
     @SuppressWarnings("ConstantConditions") // Too complicated for data flow algorithm but thorough testing of class
     // will build confidence in the method.
