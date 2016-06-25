@@ -8,10 +8,10 @@ import java.util.Locale;
 
 /**
  * Class that represents a minefield. Its size and number of mines are
- * configurable. It's main role is to transform the grid of boolean values that the generator
+ * configurable. Its main role is to transform the grid of boolean values that the generator
  * provides into a grid of Cell objects.
  */
-class Minefield {
+public class Minefield {
 
     public static final String COORDINATE_OUT_OF_RANGE = "Invalid %s coordinate: %d";
 
@@ -130,5 +130,17 @@ class Minefield {
             }
         }
         return newField;
+    }
+
+    public int getNumberOfCells(){
+        return minefieldGenerator.getHeight() * minefieldGenerator.getWidth();
+    }
+
+    public int getWidth(){
+        return minefieldGenerator.getWidth();
+    }
+
+    public int getHeight(){
+        return minefieldGenerator.getHeight();
     }
 }

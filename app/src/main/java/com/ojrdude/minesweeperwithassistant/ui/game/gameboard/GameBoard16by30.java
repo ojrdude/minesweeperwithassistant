@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.ListAdapter;
 
 import com.ojrdude.minesweeperwithassistant.R;
+import com.ojrdude.minesweeperwithassistant.minefield.Minefield;
+import com.ojrdude.minesweeperwithassistant.minefield.MinefieldGenerator;
 
 public class GameBoard16by30 extends GameBoard {
 
@@ -38,14 +40,13 @@ public class GameBoard16by30 extends GameBoard {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ImageButton[] buttons = new ImageButton[16*30];
         Activity activity = getActivity();
-        for (int i = 0; i < buttons.length; i++) {
-            buttons[i] = new ImageButton(activity);
-        }
 
-        //Todo: make custom adapter by extending arrayadapter
+        final MinefieldGenerator generator = new MinefieldGenerator(16, 30, 99);
+        final Minefield minefield = new Minefield(generator);
+        GameBoardAdapter boardAdapter = new GameBoardAdapter(activity, minefield);
+
         GridView gridView = (GridView) activity.findViewById(R.id.gameGrid);
-        gridView.setAdapter(new GameBoardAdapter(activity, 16*30));
+        gridView.setAdapter(boardAdapter);
     }
 }
