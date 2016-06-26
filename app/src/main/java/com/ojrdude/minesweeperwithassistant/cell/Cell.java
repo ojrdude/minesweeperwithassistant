@@ -5,7 +5,7 @@ package com.ojrdude.minesweeperwithassistant.cell;
  * can contain (i.e. the number of mines around the cell) are defined by the CellConstants
  * enumerated type.
  */
-public class Cell {
+public final class Cell {
 
     public static final String NULL_PARAMETER_PASSED_TO_CONSTRUCTOR = "Null parameter passed to constructor";
     public static final String ATTEMPTED_TO_UNCOVER_A_CELL_THAT_IS_ALREADY_UNCOVERED = "Attempted to uncover a cell that is already uncovered.";
@@ -25,25 +25,26 @@ public class Cell {
 
     /**
      * Constructor for Cell class.
+     *
      * @param xCoordinate The X coordinate of this cell on the game board. Must be greater than 0.
      * @param yCoordinate The Y coordinate of this cell on the game board. Must be greater than 0.
-     * @param contents What the cell "contains"; either a MINE, or a number which
-     *                 counts the number of mines around cell. This parameter CANNOT be
-     *                 UNKNOWN.
+     * @param contents    What the cell "contains"; either a MINE, or a number which
+     *                    counts the number of mines around cell. This parameter CANNOT be
+     *                    UNKNOWN.
      * @throws IllegalArgumentException If a coordinate is less than zero is supplied, or if a
-     *         "contents" value of UNKNOWN is provided.
+     *                                  "contents" value of UNKNOWN is provided.
      */
-    public Cell(int xCoordinate, int yCoordinate, CellContents contents){
-        if(contents==CellContents.UNKNOWN){
+    public Cell(int xCoordinate, int yCoordinate, CellContents contents) {
+        if (contents == CellContents.UNKNOWN) {
             throw new IllegalArgumentException(INITIALISE_CELL_UNKNOWN_VALUE);
         }
-        if(contents == null){
-            throw  new IllegalArgumentException(NULL_PARAMETER_PASSED_TO_CONSTRUCTOR);
+        if (contents == null) {
+            throw new IllegalArgumentException(NULL_PARAMETER_PASSED_TO_CONSTRUCTOR);
         }
-        if(xCoordinate < 0) {
+        if (xCoordinate < 0) {
             throw new IllegalArgumentException(X_COORDINATE_LESS_THAN_ZERO + xCoordinate);
         }
-        if(yCoordinate < 0){
+        if (yCoordinate < 0) {
             throw new IllegalArgumentException(Y_COORDINATE_LESS_THAN_ZERO + yCoordinate);
         }
         this.xCoordinate = xCoordinate;
@@ -54,20 +55,34 @@ public class Cell {
     }
 
     /**
+     * Cloning constructor for Cell class, returns an identical Cell.
+     *
+     * @param cellToClone The Cell to copy.
+     */
+    public Cell(Cell cellToClone) {
+        this.xCoordinate = cellToClone.xCoordinate;
+        this.yCoordinate = cellToClone.yCoordinate;
+        this.contents = cellToClone.contents;
+        uncovered = cellToClone.uncovered;
+        flagged = cellToClone.flagged;
+    }
+
+    /**
      * Get the the contents of the cell. If the cell is not uncovered, UNKNOWN is returned.
+     *
      * @return The contents of the cell if uncovered, UNKNOWN if not.
      */
-    public CellContents getContents(){
-        if(uncovered){
+    public CellContents getContents() {
+        if (uncovered) {
             return contents;
-        }
-        else{
+        } else {
             return CellContents.UNKNOWN;
         }
     }
 
     /**
      * Accessor method for xCoordinate.
+     *
      * @return The xCoordinate of this cell.
      */
     public int getXCoordinate() {
@@ -76,11 +91,12 @@ public class Cell {
 
     /**
      * Mutator method for xCoordinate. Sets the xCoordinate to x.
+     *
      * @param x The new xCoordinate for the cell, must be 0 or greater.
      * @throws IllegalArgumentException If the coordinate provided is less than 0.
      */
     public void setXCoordinate(int x) {
-        if(x < 0){
+        if (x < 0) {
             throw new IllegalArgumentException(X_COORDINATE_LESS_THAN_ZERO + x);
         }
         xCoordinate = x;
@@ -88,6 +104,7 @@ public class Cell {
 
     /**
      * Accessor method for yCoordinate.
+     *
      * @return The yCoordinate of this cell.
      */
     public int getYCoordinate() {
@@ -96,11 +113,12 @@ public class Cell {
 
     /**
      * Mutator method for yCoordinate. Sets the yCoordinate to y.
+     *
      * @param y The new yCoordinate for the cell, must be 0 or greater.
      * @throws IllegalArgumentException If the coordinate provided is less than 0.
      */
     public void setYCoordinate(int y) {
-        if (y<0){
+        if (y < 0) {
             throw new IllegalArgumentException(Y_COORDINATE_LESS_THAN_ZERO + y);
         }
         yCoordinate = y;
@@ -113,11 +131,11 @@ public class Cell {
      * @return True if the parameter object is equal to this Cell, false if not.
      */
     @Override
-    public boolean equals(Object obj){
-        if(obj == this){
+    public boolean equals(Object obj) {
+        if (obj == this) {
             return true;
         }
-        if(!(obj instanceof Cell)){
+        if (!(obj instanceof Cell)) {
             return false;
         }
         Cell objCell = (Cell) obj;
@@ -127,10 +145,11 @@ public class Cell {
 
     /**
      * Generates a hashCode representation of the Cell.
+     *
      * @return this Cell's hashCode.
      */
     @Override
-    public int hashCode(){
+    public int hashCode() {
         int result = 23;
         int mult = 11;
         result = mult * result + xCoordinate;
@@ -141,8 +160,8 @@ public class Cell {
     /**
      * Uncover a cell, making the cell's contents accessible.
      */
-    public void uncover(){
-        if(uncovered){
+    public void uncover() {
+        if (uncovered) {
             throw new IllegalStateException(ATTEMPTED_TO_UNCOVER_A_CELL_THAT_IS_ALREADY_UNCOVERED);
         }
         uncovered = true;
@@ -151,11 +170,11 @@ public class Cell {
     /**
      * Mark (flag) a cell as containing a mine.
      */
-    public void flag(){
-        if(uncovered){
+    public void flag() {
+        if (uncovered) {
             throw new IllegalStateException(ATTEMPTED_TO_FLAG_UNCOVERED_CELL);
         }
-        if(flagged){
+        if (flagged) {
             throw new IllegalStateException(ATTEMPTED_TO_FLAG_CELL_ALREADY_FLAGGED);
         }
         flagged = true;
@@ -164,11 +183,11 @@ public class Cell {
     /**
      * Remove the flag that marks the cell as containing a mine.
      */
-    public void removeFlag(){
-        if(uncovered){
+    public void removeFlag() {
+        if (uncovered) {
             throw new IllegalStateException(ATTEMPTED_TO_UNFLAG_UNCOVERED_CELL);
         }
-        if(!flagged){
+        if (!flagged) {
             throw new IllegalStateException(ATTEMPTED_TO_UNFLAG_CELL_ALREADY_UNFLAGGED);
         }
         flagged = false;
@@ -176,23 +195,25 @@ public class Cell {
 
     /**
      * Gets whethre or not this cell is flagged, i.e. marked as containing a mine.
+     *
      * @return True if the cell is flagged, false if not.
      */
-    public boolean isFlagged(){
+    public boolean isFlagged() {
         return flagged;
     }
+
     /**
      * Returns a String representation of this Cell.
+     *
      * @return The String representation of this cell.
      */
-    public String toString(){
-        String result =  "Cell: (" + xCoordinate + ", " + yCoordinate + ") Contents: ";
-        if(uncovered){
-            result+=contents;
+    public String toString() {
+        String result = "Cell: (" + xCoordinate + ", " + yCoordinate + ") Contents: ";
+        if (uncovered) {
+            result += contents;
+        } else {
+            result += CellContents.UNKNOWN;
         }
-        else{
-            result+=CellContents.UNKNOWN;
-        }
-        return  result;
+        return result;
     }
 }

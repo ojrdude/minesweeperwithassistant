@@ -299,6 +299,19 @@ public class CellTest {
         }
     }
 
+    @Test
+    public void testCloningConstructor(){
+        Cell cell1 = new Cell(9, 1, CellContents.SIX);
+        Cell cell2 = new Cell(cell1);
+        assertEquals(cell1, cell2);
+        assertEquals(cell1.isFlagged(), cell2.isFlagged());
+        assertEquals(cell1.getContents(), cell2.getContents());
+        cell1.uncover();
+        cell2.uncover();
+        assertEquals(cell1.getContents(), cell2.getContents());
+
+    }
+
     private CellContents randomCellContents() {
         final CellContents[] cellContentsVals = new CellContents[]{
                 CellContents.MINE,
