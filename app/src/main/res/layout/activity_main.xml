@@ -10,9 +10,9 @@
     tools:context=".ui.game.MainActivity">
 
     <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="com.ojrdude.minesweeperwithassistant.ui.game.gameboard.GameBoard16by30"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.ojrdude.minesweeperwithassistant.ui.game.gameboard.GameBoard9by9"
         android:id="@+id/fragment"
         tools:layout="@layout/fragment_game_board_16_by_30" />
 </RelativeLayout>
