@@ -13,16 +13,16 @@ import java.util.Locale;
  * Abstract definition of a GameBoard fragment. Contains methods and properties that are
  * shared between all game board fragments of any size.
  */
-public abstract class GameBoard extends Fragment{
+public abstract class GameBoard extends Fragment {
 
     protected String TAG = "MSWA-UI-GameBoardAbstract";
-    protected GameBoard9by9.OnCellClickListener mListener;
+    protected GameBoard9by9.OnCellClickListener parentActivityListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof GameBoard9by9.OnCellClickListener) {
-            mListener = (GameBoard9by9.OnCellClickListener) context;
+            parentActivityListener = (GameBoard9by9.OnCellClickListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnCellClickListener");
@@ -32,7 +32,7 @@ public abstract class GameBoard extends Fragment{
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        parentActivityListener = null;
     }
 
     /**
@@ -50,6 +50,13 @@ public abstract class GameBoard extends Fragment{
 
     public void onClick(View v) {
         Log.d(TAG, "Click detected on view: " + v);
+
+        String cellCoords = v.getTag().toString();
+        String[] splitCoords = cellCoords.split(",");
+        int x = Integer.valueOf(splitCoords[0]);
+        int y = Integer.valueOf(splitCoords[1]);
+
+        parentActivityListener.onCellClicked(x, y, (ImageButton) v);
     }
 
     /**

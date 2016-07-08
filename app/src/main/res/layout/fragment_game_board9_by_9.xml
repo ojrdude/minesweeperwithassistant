@@ -20,7 +20,9 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_0_0"/>
+
 
         <ImageButton
             android:id="@+id/cell_1_0"
@@ -30,7 +32,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_0"/>
 
         <ImageButton
             android:id="@+id/cell_2_0"
@@ -40,7 +43,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_0"/>
 
         <ImageButton
             android:id="@+id/cell_3_0"
@@ -50,7 +54,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_0"/>
 
         <ImageButton
             android:id="@+id/cell_4_0"
@@ -60,7 +65,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_4_0"/>
 
         <ImageButton
             android:id="@+id/cell_5_0"
@@ -70,7 +76,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_5_0"/>
 
         <ImageButton
             android:id="@+id/cell_6_0"
@@ -80,7 +87,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_0"/>
 
         <ImageButton
             android:id="@+id/cell_7_0"
@@ -90,7 +98,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_0"/>
 
         <ImageButton
             android:id="@+id/cell_8_0"
@@ -100,7 +109,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_0"/>
     </TableRow>
 
     <TableRow
@@ -116,7 +126,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_0_1"/>
 
         <ImageButton
             android:id="@+id/cell_1_1"
@@ -126,7 +137,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_1"/>
 
         <ImageButton
             android:id="@+id/cell_2_1"
@@ -136,7 +148,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_1"/>
 
         <ImageButton
             android:id="@+id/cell_3_1"
@@ -146,7 +159,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_1"/>
 
         <ImageButton
             android:id="@+id/cell_4_1"
@@ -156,7 +170,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_4_1"/>
 
         <ImageButton
             android:id="@+id/cell_5_1"
@@ -166,7 +181,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_5_1"/>
 
         <ImageButton
             android:id="@+id/cell_6_1"
@@ -176,7 +192,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_1"/>
 
         <ImageButton
             android:id="@+id/cell_7_1"
@@ -186,7 +203,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_1"/>
 
         <ImageButton
             android:id="@+id/cell_8_1"
@@ -196,7 +214,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_1"/>
     </TableRow>
 
     <TableRow
@@ -212,7 +231,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_0_2"/>
 
         <ImageButton
             android:id="@+id/cell_1_2"
@@ -222,7 +242,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_2"/>
 
         <ImageButton
             android:id="@+id/cell_2_2"
@@ -232,7 +253,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_2"/>
 
         <ImageButton
             android:id="@+id/cell_3_2"
@@ -242,7 +264,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_2"/>
 
         <ImageButton
             android:id="@+id/cell_4_2"
@@ -252,7 +275,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_4_2"/>
 
         <ImageButton
             android:id="@+id/cell_5_2"
@@ -262,7 +286,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_5_2"/>
 
         <ImageButton
             android:id="@+id/cell_6_2"
@@ -272,7 +297,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_2"/>
 
         <ImageButton
             android:id="@+id/cell_7_2"
@@ -282,7 +308,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_2"/>
 
         <ImageButton
             android:id="@+id/cell_8_2"
@@ -292,7 +319,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_2"/>
     </TableRow>
 
     <TableRow
@@ -308,7 +336,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_0_3"/>
 
         <ImageButton
             android:id="@+id/cell_1_3"
@@ -318,7 +347,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_3"/>
 
         <ImageButton
             android:id="@+id/cell_2_3"
@@ -328,7 +358,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_3"/>
 
         <ImageButton
             android:id="@+id/cell_3_3"
@@ -338,7 +369,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_3"/>
 
         <ImageButton
             android:id="@+id/cell_4_3"
@@ -348,7 +380,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_4_3"/>
 
         <ImageButton
             android:id="@+id/cell_5_3"
@@ -358,7 +391,8 @@
             android:contentDescription="@string/cell_5_3"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/coveredcell" />
+            android:src="@drawable/coveredcell"
+            android:tag="@string/tag_cell_5_3"/>
 
         <ImageButton
             android:id="@+id/cell_6_3"
@@ -368,7 +402,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_3"/>
 
         <ImageButton
             android:id="@+id/cell_7_3"
@@ -378,7 +413,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_3"/>
 
         <ImageButton
             android:id="@+id/cell_8_3"
@@ -388,7 +424,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_3"/>
     </TableRow>
 
     <TableRow
@@ -404,7 +441,8 @@
             android:contentDescription="@string/cell_0_4"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/coveredcell" />
+            android:src="@drawable/coveredcell"
+            android:tag="@string/tag_cell_0_4"/>
 
         <ImageButton
             android:id="@+id/cell_1_4"
@@ -414,7 +452,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_4"/>
 
         <ImageButton
             android:id="@+id/cell_2_4"
@@ -424,7 +463,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_4"/>
 
         <ImageButton
             android:id="@+id/cell_3_4"
@@ -434,7 +474,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_4"/>
 
         <ImageButton
             android:id="@+id/cell_4_4"
@@ -444,7 +485,8 @@
             android:contentDescription="@string/cell_4_4"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/coveredcell" />
+            android:src="@drawable/coveredcell"
+            android:tag="@string/tag_cell_4_4"/>
 
         <ImageButton
             android:id="@+id/cell_5_4"
@@ -454,7 +496,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_5_4"/>
 
         <ImageButton
             android:id="@+id/cell_6_4"
@@ -464,7 +507,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_4"/>
 
         <ImageButton
             android:id="@+id/cell_7_4"
@@ -474,7 +518,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_4"/>
 
         <ImageButton
             android:id="@+id/cell_8_4"
@@ -484,7 +529,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_4"/>
     </TableRow>
 
     <TableRow
@@ -500,7 +546,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_0_5"/>
 
         <ImageButton
             android:id="@+id/cell_1_5"
@@ -510,7 +557,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_5"/>
 
         <ImageButton
             android:id="@+id/cell_2_5"
@@ -520,7 +568,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_5"/>
 
         <ImageButton
             android:id="@+id/cell_3_5"
@@ -530,7 +579,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_5"/>
 
         <ImageButton
             android:id="@+id/cell_4_5"
@@ -540,7 +590,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_4_5"/>
 
         <ImageButton
             android:id="@+id/cell_5_5"
@@ -550,7 +601,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_5_5"/>
 
         <ImageButton
             android:id="@+id/cell_6_5"
@@ -560,7 +612,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_5"/>
 
         <ImageButton
             android:id="@+id/cell_7_5"
@@ -570,7 +623,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_5"/>
 
         <ImageButton
             android:id="@+id/cell_8_5"
@@ -580,7 +634,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_5"/>
     </TableRow>
 
     <TableRow
@@ -596,7 +651,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_0_6"/>
 
         <ImageButton
             android:id="@+id/cell_1_6"
@@ -606,7 +662,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_6"/>
 
         <ImageButton
             android:id="@+id/cell_2_6"
@@ -616,7 +673,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_6" />
 
         <ImageButton
             android:id="@+id/cell_3_6"
@@ -626,7 +684,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_6"/>
 
         <ImageButton
             android:id="@+id/cell_4_6"
@@ -636,7 +695,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_4_6"/>
 
         <ImageButton
             android:id="@+id/cell_5_6"
@@ -646,7 +706,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_5_6"/>
 
         <ImageButton
             android:id="@+id/cell_6_6"
@@ -656,7 +717,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_6"/>
 
         <ImageButton
             android:id="@+id/cell_7_6"
@@ -666,7 +728,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_6"/>
 
         <ImageButton
             android:id="@+id/cell_8_6"
@@ -676,7 +739,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_6"/>
     </TableRow>
 
     <TableRow
@@ -692,7 +756,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_0_7"/>
 
         <ImageButton
             android:id="@+id/cell_1_7"
@@ -702,7 +767,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_7"/>
 
         <ImageButton
             android:id="@+id/cell_2_7"
@@ -712,7 +778,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_7"/>
 
         <ImageButton
             android:id="@+id/cell_3_7"
@@ -722,7 +789,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_7"/>
 
         <ImageButton
             android:id="@+id/cell_4_7"
@@ -732,7 +800,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_4_7"/>
 
         <ImageButton
             android:id="@+id/cell_5_7"
@@ -742,7 +811,8 @@
             android:contentDescription="@string/cell_5_7"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/coveredcell" />
+            android:src="@drawable/coveredcell"
+            android:tag="@string/tag_cell_5_7"/>
 
         <ImageButton
             android:id="@+id/cell_6_7"
@@ -752,7 +822,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_7"/>
 
         <ImageButton
             android:id="@+id/cell_7_7"
@@ -762,7 +833,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_7"/>
 
         <ImageButton
             android:id="@+id/cell_8_7"
@@ -772,7 +844,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_7"/>
     </TableRow>
 
     <TableRow
@@ -788,7 +861,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_0_8"/>
 
         <ImageButton
             android:id="@+id/cell_1_8"
@@ -798,7 +872,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_1_8"/>
 
         <ImageButton
             android:id="@+id/cell_2_8"
@@ -808,7 +883,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_2_8"/>
 
         <ImageButton
             android:id="@+id/cell_3_8"
@@ -818,7 +894,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_3_8"/>
 
         <ImageButton
             android:id="@+id/cell_4_8"
@@ -828,7 +905,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_4_8"/>
 
         <ImageButton
             android:id="@+id/cell_5_8"
@@ -838,7 +916,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_5_8"/>
 
         <ImageButton
             android:id="@+id/cell_6_8"
@@ -848,7 +927,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_6_8"/>
 
         <ImageButton
             android:id="@+id/cell_7_8"
@@ -858,7 +938,8 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_7_8"/>
 
         <ImageButton
             android:id="@+id/cell_8_8"
@@ -868,6 +949,7 @@
             android:padding="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/coveredcell"
-            android:clickable="true" />
+            android:clickable="true"
+            android:tag="@string/tag_cell_8_8"/>
     </TableRow>
 </TableLayout>
