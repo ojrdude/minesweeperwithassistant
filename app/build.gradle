@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.ojrdude.minesweeperwithassistant"
-        minSdkVersion 11 // Changed from 10 so Fragments are available
+        minSdkVersion 23 // Changed from 10 to 11 so Fragments are available, changed from 11 to 23 for getContext() in fragment
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"

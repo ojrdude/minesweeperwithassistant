@@ -13,7 +13,7 @@
         android:gravity="center_vertical|center_horizontal">
 
         <ImageButton
-            android:id="@+id/cell0_0"
+            android:id="@+id/cell_0_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/cell_0_0"
@@ -53,7 +53,7 @@
             android:clickable="true" />
 
         <ImageButton
-            android:id="@+id/cell5"
+            android:id="@+id/cell_4_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/cell_4_0"
@@ -149,7 +149,7 @@
             android:clickable="true" />
 
         <ImageButton
-            android:id="@+id/cell14"
+            android:id="@+id/cell_4_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/cell_4_1"
@@ -563,7 +563,7 @@
             android:clickable="true" />
 
         <ImageButton
-            android:id="@+id/cell53"
+            android:id="@+id/cell_7_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/cell_7_5"
