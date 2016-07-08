@@ -1,7 +1,6 @@
 package com.ojrdude.minesweeperwithassistant.ui.game;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -22,7 +21,7 @@ public class GameControls extends Fragment implements CompoundButton.OnCheckedCh
 
 
     private static final String TAG = "MSWA-UI-GameControls";
-    private OnGameControlsChanged mListener;
+    private OnGameControlsChanged containingActivityListener;
     private Button newGameButton;
     private ToggleButton flagToggleButton;
 
@@ -46,7 +45,7 @@ public class GameControls extends Fragment implements CompoundButton.OnCheckedCh
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnGameControlsChanged) {
-            mListener = (OnGameControlsChanged) context;
+            containingActivityListener = (OnGameControlsChanged) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnGameControlsChanged");
@@ -56,12 +55,13 @@ public class GameControls extends Fragment implements CompoundButton.OnCheckedCh
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        containingActivityListener = null;
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         Log.d(TAG, "Registered change of state on Toggle Button: " + buttonView + ". IsChecked: " + isChecked);
+        containingActivityListener.onFlagsToggle(isChecked);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class GameControls extends Fragment implements CompoundButton.OnCheckedCh
      * the game controls are modified.
      */
     public interface OnGameControlsChanged {
-        void onFlagsToggle();
+        void onFlagsToggle(boolean flagModeChecked);
 
         void onNewGame();
     }
