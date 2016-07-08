@@ -2,6 +2,7 @@ package com.ojrdude.minesweeperwithassistant.ui.game;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageButton;
 
 import com.ojrdude.minesweeperwithassistant.R;
 import com.ojrdude.minesweeperwithassistant.ui.game.gameboard.GameBoard9by9;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements GameControls.OnGa
     }
 
     @Override
-    public void onCellClicked(int x, int y) {
+    public void onCellClicked(int x, int y, ImageButton cellImageButton) {
 
     }
 }

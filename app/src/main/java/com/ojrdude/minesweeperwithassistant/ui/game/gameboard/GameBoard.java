@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import java.util.Locale;
 
@@ -55,6 +56,6 @@ public abstract class GameBoard extends Fragment{
      * The containing activity must implement this interface so that it can be updated when a cell is clicked.
      */
     public interface OnCellClickListener {
-        void onCellClicked(int x, int y);
+        void onCellClicked(int x, int y, ImageButton cellImageButton);
     }
 }

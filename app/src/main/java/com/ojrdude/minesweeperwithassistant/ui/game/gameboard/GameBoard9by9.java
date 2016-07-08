@@ -15,7 +15,7 @@ import java.util.Set;
 /**
  * The Beginner difficulty level GameBoard
  */
-public class GameBoard9by9 extends GameBoard implements View.OnClickListener {
+public final class GameBoard9by9 extends GameBoard implements View.OnClickListener {
 
 
     private Set<ImageButton> cells;
