@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.game.GameControls"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/new_game"
+        android:id="@+id/newGameButton"
+        android:layout_weight="4" />
+
+    <ToggleButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="New ToggleButton"
+        android:id="@+id/flagToggleButton"
+        android:textOn="@string/flag_toggle_on"
+        android:textOff="@string/flag_toggle_off"
+        android:layout_weight="1"
+        android:checked="false" />
+</LinearLayout>

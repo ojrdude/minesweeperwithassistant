@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <fragment
+        tools:layout="@layout/fragment_game_controls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.ojrdude.minesweeperwithassistant.ui.game.GameControls"
+        android:id="@+id/gameControls"
+        android:layout_weight="4" />
+
+    <fragment
+        tools:layout="@layout/fragment_game_board9_by_9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.ojrdude.minesweeperwithassistant.ui.game.gameboard.GameBoard9by9"
+        android:id="@+id/gameBoard"
+        android:layout_weight="1" />
+
+</LinearLayout>

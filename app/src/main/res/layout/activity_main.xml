@@ -12,7 +12,14 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:name="com.ojrdude.minesweeperwithassistant.ui.game.GameControls"
+        android:id="@+id/gameControls"
+        tools:layout="@layout/fragment_game_controls" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:name="com.ojrdude.minesweeperwithassistant.ui.game.gameboard.GameBoard9by9"
-        android:id="@+id/fragment"
-        tools:layout="@layout/fragment_game_board_16_by_30" />
+        android:id="@+id/gameBoard"
+        tools:layout="@layout/fragment_game_board9_by_9" />
 </RelativeLayout>
