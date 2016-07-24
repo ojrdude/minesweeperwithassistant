@@ -13,6 +13,7 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Unit tests for Minefield Class.
@@ -24,7 +25,7 @@ public class MinefieldTest {
     private Minefield minefield;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         IMinefieldGenerator generator = new IMinefieldGenerator() {
             @Override
             /**
@@ -63,40 +64,27 @@ public class MinefieldTest {
     }
 
     @Test
-    public void testGetCellAt(){
-        Cell cell00 = minefield.getCellAtCoordinates(0, 0);
-        assertEquals(0, cell00.getXCoordinate());
-        assertEquals(0, cell00.getYCoordinate());
-        assertFalse(cell00.isFlagged());
-        cell00.uncover();
-        assertEquals(CellContents.MINE, cell00.getContents());
+    public void testUncoverCell() {
 
-        Cell cell22 = minefield.getCellAtCoordinates(2, 2);
-        assertEquals(2, cell22.getXCoordinate());
-        assertEquals(2, cell22.getYCoordinate());
-        assertFalse(cell22.isFlagged());
-        cell22.uncover();
-        assertEquals(CellContents.THREE, cell22.getContents());
+        CellContents cell22 = minefield.uncoverCell(2, 2);
+        assertEquals(CellContents.THREE, cell22);
 
-        Cell cell13 = minefield.getCellAtCoordinates(1, 3);
-        assertEquals(1, cell13.getXCoordinate());
-        assertEquals(3, cell13.getYCoordinate());
-        assertFalse(cell13.isFlagged());
-        cell13.uncover();
-        assertEquals(CellContents.TWO, cell13.getContents());
+        CellContents cell00 = minefield.uncoverCell(0, 0);
+        assertEquals(CellContents.MINE, cell00);
 
-        Cell cell33 = minefield.getCellAtCoordinates(3, 3);
-        assertEquals(3, cell33.getXCoordinate());
-        assertEquals(3, cell33.getYCoordinate());
-        assertFalse(cell33.isFlagged());
-        cell33.uncover();
-        assertEquals(CellContents.MINE, cell33.getContents());
+        CellContents cell13 = minefield.uncoverCell(1, 3);
+
+        assertEquals(CellContents.TWO, cell13);
+
+        CellContents cell33 = minefield.uncoverCell(3, 3);
+        assertEquals(CellContents.MINE, cell33);
     }
 
+
     @Test
-    public void testGetThreeByThreeCellGridCentralGrid(){
+    public void testGetThreeByThreeCellGridCentralGrid() {
         ThreeByThreeCellGrid grid = minefield.getThreeByThreeGrid(2, 1);
-        for(Cell cell : grid){
+        for (Cell cell : grid) {
             assertEquals(CellContents.UNKNOWN, cell.getContents());
             assertFalse(cell.isFlagged());
             cell.uncover();
@@ -134,7 +122,7 @@ public class MinefieldTest {
     }
 
     @Test
-    public void testGetThreeByThreeCellGridBoardEdge(){
+    public void testGetThreeByThreeCellGridBoardEdge() {
         ThreeByThreeCellGrid grid = minefield.getThreeByThreeGrid(1, 3);
         assertTrue(grid.isCellSetAt(ThreeByThreeCellGrid.GridLocation.TOP_LEFT));
         assertTrue(grid.isCellSetAt(ThreeByThreeCellGrid.GridLocation.TOP));
@@ -154,7 +142,7 @@ public class MinefieldTest {
     }
 
     @Test
-    public void testGetThreeByThreeCellGridCorner(){
+    public void testGetThreeByThreeCellGridCorner() {
         ThreeByThreeCellGrid grid = minefield.getThreeByThreeGrid(3, 3);
         assertTrue(grid.isCellSetAt(ThreeByThreeCellGrid.GridLocation.TOP_LEFT));
         assertTrue(grid.isCellSetAt(ThreeByThreeCellGrid.GridLocation.TOP));
@@ -178,13 +166,13 @@ public class MinefieldTest {
      * Do the constructor and getThreeByThreeCellGrid method still behave?
      */
     @Test
-    public void testGetThreeByThreeGridFromTwoByTwoField(){
+    public void testGetThreeByThreeGridFromTwoByTwoField() {
         IMinefieldGenerator smallGenerator = new IMinefieldGenerator() {
             @Override
             public boolean[][] generateMinefield() {
                 return new boolean[][]{
-                    {true, false},
-                    {false, true}
+                        {true, false},
+                        {false, true}
                 };
             }
 
@@ -228,7 +216,7 @@ public class MinefieldTest {
      * Do the constructor and getThreeByThreeCellGrid method still behave?
      */
     @Test
-    public void testGetThreeByThreeGridFromOneByOneField(){
+    public void testGetThreeByThreeGridFromOneByOneField() {
         IMinefieldGenerator vSmallGenerator = new IMinefieldGenerator() {
             @Override
             public boolean[][] generateMinefield() {
@@ -272,57 +260,87 @@ public class MinefieldTest {
 
 
     @Test
-    public void testGetThreeByThreeCellGridExceptions(){
-        try{
+    public void testGetThreeByThreeCellGridExceptions() {
+        try {
             minefield.getThreeByThreeGrid(4, 3);
             fail(NO_EXCEPTION_THROWN);
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             assertEquals(String.format(Locale.UK, Minefield.COORDINATE_OUT_OF_RANGE, "x", 4),
                     e.getMessage());
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             fail(UNEXPECTED_EXCEPTION_THROWN_BY_CONSTRUCTOR);
         }
 
-        try{
+        try {
             minefield.getThreeByThreeGrid(-1, 2);
             fail(NO_EXCEPTION_THROWN);
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             assertEquals(String.format(Locale.UK, Minefield.COORDINATE_OUT_OF_RANGE, "x", -1),
                     e.getMessage());
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             fail(UNEXPECTED_EXCEPTION_THROWN_BY_CONSTRUCTOR);
         }
 
-        try{
+        try {
             minefield.getThreeByThreeGrid(1, 4);
             fail(NO_EXCEPTION_THROWN);
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             assertEquals(String.format(Locale.UK, Minefield.COORDINATE_OUT_OF_RANGE, "y", 4),
                     e.getMessage());
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             fail(UNEXPECTED_EXCEPTION_THROWN_BY_CONSTRUCTOR);
         }
 
-        try{
+        try {
             minefield.getThreeByThreeGrid(0, -1);
             fail(NO_EXCEPTION_THROWN);
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             assertEquals(String.format(Locale.UK, Minefield.COORDINATE_OUT_OF_RANGE, "y", -1),
                     e.getMessage());
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             fail(UNEXPECTED_EXCEPTION_THROWN_BY_CONSTRUCTOR);
         }
     }
 
-    private void assertCellCoordinates(int xCoordinate, int yCoordinate, Cell cell){
+    /**
+     * Test that the first cell uncovered is never a mine. Uncover a cell that we know
+     * does contain a mine and check that the mine is not returned.
+     */
+    @Test
+    public void testUncoverCellFirstMoveNoMines() {
+        CellContents contents = minefield.uncoverCell(3, 3);
+        assertNotEquals(CellContents.MINE, contents);
+    }
+
+    @Test
+    public void testUncoverCellExceptions() {
+        try {
+            minefield.uncoverCell(-1, 0);
+        }
+        catch (IllegalArgumentException e){
+            assertEquals(String.format(Locale.UK, Minefield.COORDINATE_OUT_OF_RANGE, "x", -1), e.getMessage());
+        }
+        try {
+            minefield.uncoverCell(4, 0);
+        }
+        catch (IllegalArgumentException e){
+            assertEquals(String.format(Locale.UK, Minefield.COORDINATE_OUT_OF_RANGE, "x", 4), e.getMessage());
+        }
+        try {
+            minefield.uncoverCell(0, -1);
+        }
+        catch (IllegalArgumentException e){
+            assertEquals(String.format(Locale.UK, Minefield.COORDINATE_OUT_OF_RANGE, "y", -1), e.getMessage());
+        }
+        try {
+            minefield.uncoverCell(0, 4);
+        }
+        catch (IllegalArgumentException e){
+            assertEquals(String.format(Locale.UK, Minefield.COORDINATE_OUT_OF_RANGE, "y", 4), e.getMessage());
+        }
+    }
+
+    private void assertCellCoordinates(int xCoordinate, int yCoordinate, Cell cell) {
         assertEquals(xCoordinate, cell.getXCoordinate());
         assertEquals(yCoordinate, cell.getYCoordinate());
     }

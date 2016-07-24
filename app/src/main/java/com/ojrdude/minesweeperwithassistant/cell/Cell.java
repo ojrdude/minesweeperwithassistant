@@ -18,11 +18,12 @@ public final class Cell {
     public static final String Y_COORDINATE_LESS_THAN_ZERO = "Coordinates must be 0 or greater. YCoord: ";
     public static final String INITIALISE_CELL_UNKNOWN_VALUE = "Cannot initialise a Cell with an Unknown value";
     private CellContents contents;
+
     private boolean uncovered;
+
     private boolean flagged;
     private int xCoordinate;
     private int yCoordinate;
-
     /**
      * Constructor for Cell class.
      *
@@ -200,6 +201,15 @@ public final class Cell {
      */
     public boolean isFlagged() {
         return flagged;
+    }
+
+    /**
+     * Gets whether or not this cell is uncovered.
+     *
+     * @return True if uncovered, false if not.
+     */
+    public boolean isUncovered() {
+        return uncovered;
     }
 
     /**

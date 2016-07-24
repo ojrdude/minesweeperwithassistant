@@ -53,6 +53,16 @@ public class MainActivityUITest {
 
     }
 
+    @Test
+    public void openACellAndFlagAnother(){
+        final int cell8x8 = getIDForCoordinate(8, 8);
+        onView(withId(cell8x8)).perform(click());
+        final int cell8x7 = getIDForCoordinate(8,7);
+        onView(withId(R.id.flagToggleButton)).perform(click());
+        onView(withId(cell8x7)).perform(click());
+        onView(withId(cell8x7)).check(matches(CustomEspressoMatchers.withDrawable(R.drawable.flag)));
+    }
+
     private int getIDForCoordinate(int x, int y) {
         String id =String.format(Locale.UK, "cell_%d_%d", x, y);
         Context targetContext = InstrumentationRegistry.getTargetContext();
